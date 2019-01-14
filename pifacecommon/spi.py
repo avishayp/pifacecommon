@@ -9,13 +9,16 @@ SPI_HELP_LINK = "http://piface.github.io/pifacecommon/installation.html" \
     "#enable-the-spi-module"
 
 
+class Defaults:
+    SPEED_HZ = 100000
+
 class SPIInitError(Exception):
     pass
 
 
 class SPIDevice(object):
     """An SPI Device at /dev/spi<bus>.<chip_select>."""
-    def __init__(self, bus=0, chip_select=0, spi_callback=None, speed_hz=100000):
+    def __init__(self, bus=0, chip_select=0, spi_callback=None, speed_hz=Defaults.SPEED_HZ):
         """Initialises the SPI device file descriptor.
 
         :param bus: The SPI device bus number

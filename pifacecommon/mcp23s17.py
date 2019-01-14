@@ -4,7 +4,7 @@ from .core import (
     get_bit_mask,
     get_bit_num,
 )
-from .spi import SPIDevice
+from .spi import SPIDevice, Defaults
 import pifacecommon.interrupts
 
 
@@ -87,7 +87,7 @@ class MCP23S17(SPIDevice):
     :attribute: olata/olatb -- The OLAT register provides access to the
                                output latches.
     """
-    def __init__(self, hardware_addr=0, bus=0, chip_select=0, speed_hz=100000):
+    def __init__(self, hardware_addr=0, bus=0, chip_select=0, speed_hz=Defaults.SPEED_HZ):
         super(MCP23S17, self).__init__(bus, chip_select, speed_hz=speed_hz)
         self.hardware_addr = hardware_addr
 
